@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Daily Quote Generator</title>
+<title>Motivational Quote Generator</title>
 
 <style>
 
@@ -46,40 +46,43 @@ font-size:18px;
 
 <div class="container">
 
-<h2>💬 Daily Quote Generator</h2>
+<h2>💬 Motivational Quote Generator</h2>
 
-<div id="quote">Click the button to generate a quote</div>
+<div id="quote">Click the button to get a quote</div>
 
-<button onclick="getQuote()">New Quote</button>
+<button onclick="generateQuote()">New Quote</button>
 
 </div>
 
 <script>
 
-async function getQuote(){
+const quotes = [
 
-try{
+"Success usually comes to those who are too busy to be looking for it.",
 
-let response = await fetch("https://api.adviceslip.com/advice")
+"Don't watch the clock; do what it does. Keep going.",
 
-let data = await response.json()
+"The future depends on what you do today.",
 
-document.getElementById("quote").innerText =
-'"' + data.slip.advice + '"'
+"Small progress is still progress.",
+
+"Consistency is the key to success.",
+
+"Great things never come from comfort zones.",
+
+"Dream big and dare to fail.",
+
+"Push yourself, because no one else is going to do it for you."
+
+]
+
+function generateQuote(){
+
+let random = Math.floor(Math.random()*quotes.length)
+
+document.getElementById("quote").innerText = quotes[random]
 
 }
-
-catch(error){
-
-document.getElementById("quote").innerText =
-"Failed to load quote. Try again."
-
-}
-
-}
-
-// load quote when page opens
-getQuote()
 
 </script>
 
