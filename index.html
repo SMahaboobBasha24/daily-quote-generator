@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Daily Quote Generator</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.container{
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+width:400px;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+background:#22c55e;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#quote{
+margin-top:20px;
+font-size:18px;
+}
+
+#author{
+margin-top:10px;
+color:#94a3b8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>💬 Daily Quote</h2>
+
+<div id="quote">Click the button to get a quote</div>
+<div id="author"></div>
+
+<button onclick="getQuote()">New Quote</button>
+
+</div>
+
+<script>
+
+async function getQuote(){
+
+let response = await fetch("https://api.quotable.io/random")
+
+let data = await response.json()
+
+document.getElementById("quote").innerText = '"' + data.content + '"'
+
+document.getElementById("author").innerText = "- " + data.author
+
+}
+
+</script>
+
+</body>
+</html>
